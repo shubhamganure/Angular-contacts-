@@ -1,0 +1,91 @@
+<div style="text-align:center">
+    <alert type="success"><h1>Contact Information</h1></alert>
+</div>
+
+<div class="container">
+        
+    <form [formGroup]="contactForm">
+
+            <!-- <form class="md-form"> -->
+                    <div class="file-field">
+                     
+                      <div class="d-flex justify-content-center">
+                         <div class="btn btn-mdb-color btn-rounded float-left">
+                            <span>Add Photo: </span>
+                            <input type="file"  class="form-control" formControlName="pic">
+                         </div>
+                      </div>
+                    </div>
+            <!-- //</form> -->
+        
+        <div class="form-group row">
+        
+
+            <div class="col-6">
+                <label for="firstname">First Name:</label><br> 
+                <input  type="text" [class.is-invalid] = "contactForm.get('firstname').invalid && contactForm.get('firstname').touched" class="form-control" formControlName="firstname" id="firstname"> 
+                <small [class.d-none]="contactForm.get('firstname').valid || contactForm.get('firstname').untouched" class="text-danger">First Name is required</small>      
+            </div>
+          
+            <div class="col-6">
+                <label for="lastname">Last Name:</label><br>  
+                <input type="text"  [class.is-invalid] = "contactForm.get('lastname').invalid && contactForm.get('lastname').touched"  class="form-control" formControlName="lastname" id="lastname"> 
+                <small [class.d-none]="contactForm.get('lastname').valid || contactForm.get('lastname').untouched" class="text-danger">Last Name is required</small>   
+            </div>
+                
+        </div>
+
+        
+        <div class="form-group row">
+        
+            <div class="col-12">
+                <label for="company">Company:</label><br>  
+                <input  type="text" [class.is-invalid] = "contactForm.get('company').invalid && contactForm.get('company').touched"  class="form-control" formControlName="company" id="company"> 
+                <small [class.d-none]="contactForm.get('company').valid || contactForm.get('company').untouched" class="text-danger">Company Name is required</small>    
+            </div>
+
+        </div>
+
+
+        <div class="form-group row"
+        >      
+            <div class="col-12">
+                <label for="title">Title:</label><br> 
+                <input type="text" [class.is-invalid] = "contactForm.get('title').invalid && contactForm.get('title').touched" class="form-control" formControlName="title" id="title">  
+                <small [class.d-none]="contactForm.get('title').valid || contactForm.get('title').untouched" class="text-danger">Title required</small>     
+            </div>
+                    
+        </div> 
+
+        <div class="form-group">
+        
+           
+            <div>
+                <label for="email">Email:</label>
+                <input  type="email"  [class.is-invalid] = "contactForm.get('email').invalid && contactForm.get('email').touched"  class="form-control" formControlName="email" id="email"> 
+                <small [class.d-none]="contactForm.get('email').valid || contactForm.get('email').untouched" class="text-danger">Email is required</small>      
+            </div>
+
+        </div>
+
+        <div class="form-group">
+                  
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="tel" [class.is-invalid] = "contactForm.get('phone').invalid && contactForm.get('phone').touched" class="form-control" formControlName="phone" id="phone">    
+                <small [class.d-none]="contactForm.get('phone').valid || contactForm.get('phone').untouched" class="text-danger">Phone Number is required</small>  
+            </div>
+                        
+        </div>
+
+        <div class="col text-center">
+            <button (click)="onSubmit()" type="button" class="btn btn-success">Save</button>
+        </div>
+
+    </form>
+    <div class="alert alert-info"  *ngIf="showSuccessMessage">
+        Contact Successfully Submitted to Contact Database
+    </div>
+    
+
+</div>

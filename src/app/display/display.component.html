@@ -1,0 +1,37 @@
+<div style="text-align:center">
+  <alert type="success"><h1>Contact Information</h1></alert>
+</div>
+<form class="form-inline">
+  <input class="form-control" name="searchInput" placeholder="Search Contact into contacts DB" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 50%;">
+  <button class="btn btn-outline-primary" (click)="searchText=''">Clear</button>
+</form>
+
+<table class="table table-sm">
+  <thead>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Company</th>
+    <th>Title</th>
+    <th>Email</th>
+    <th>Mobile Number</th>
+    <th></th>
+  </thead>
+  <ng-container *ngFor="let contact of contactArray">
+    <tr class="table-dark" *ngIf="filterCondition(contact)">
+      <td>{{contact.firstname}}</td>
+      <td>{{contact.lastname}}</td>
+      <td>{{contact.company}}</td>
+      <td>{{contact.title}}</td>
+      <td>{{contact.email}}</td>
+      <td>{{contact.phone}}</td>
+      <td>
+        <!-- <button class="btn btn-outline-info" (click)="Informationservice.populateForm(contact)">Edit Information</button> -->
+        <button class="btn btn-outline-danger" (click)="onDelete(contact.$key)">Delete Information</button>
+      </td>
+    
+    </tr>
+  </ng-container>
+</table>
+<div class="alert alert-danger" *ngIf="showDeletedMessage">
+  Deleted successfully. 
+</div>
